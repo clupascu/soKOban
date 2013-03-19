@@ -1,4 +1,5 @@
 soKOban
 =======
 
-A Sokoban clone done in JavaScript using KnockOutJS
+A [Sokoban](http://en.wikipedia.org/wiki/Sokoban) clone coded in JavaScript using [KnockOutJS](http://knockoutjs.com/)
+
