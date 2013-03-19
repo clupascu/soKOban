@@ -1,0 +1,44 @@
+div.tile {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 0;
+  float: left;
+  padding: 2px;
+}
+
+div.wall {
+  background-color: #000;
+}
+
+div.placeholder {
+  background-color: orange;
+}
+
+
+div.contents {
+  width: 18px;
+  height: 18px;
+  
+  -webkit-opacity: 0.75;
+  -moz-opacity: 0.75;
+  filter:alpha(opacity=75);
+}
+
+div.box { 
+  background-color: #77d;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+div.man{
+  background: red;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+
+.clearFloat{
+  clear: both;
+}

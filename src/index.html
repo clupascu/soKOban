@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+  
+  <meta charset=utf-8 />
+  <title>soKOban</title>
+  </head>
+  <body>
+    
+    <h1>soKOban <button onclick="displayHelpMessage();">?</button></h1>
+
+    <div data-bind="foreach: boardRows">
+      
+      <div>
+        <span data-bind="foreach: $data">
+          <div data-bind="attr: { 'class': type() + ' tile' }">
+            <div data-bind="attr: { 'class': contents() + ' contents' }">
+            </div>
+          </div>
+        </span>
+      </div>
+      
+      <div class="clearFloat"></div>
+      
+    </div>
+    
+    <div>Count of unplaced boxes: <b data-bind="text: misplacedBoxesCount"></b></div>
+    
+    <h3 data-bind="visible: levelSolved">Congratulations, you won!</h3>
+
+
+    <script src="soKOban.js"></script>
+    <script type="text/javascript">
+      function displayHelpMessage() {
+        alert("Use the arrow keys to move the boxes on the placeholders.\nRefresh the page to reset the level.");
+      }
+    </script>
+  </body>
+</html>
