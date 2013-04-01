@@ -1,7 +1,7 @@
 soKOban
 =======
 
-This is a [Sokoban](http://en.wikipedia.org/wiki/Sokoban) clone coded in JavaScript using [KnockOutJS](http://knockoutjs.com/).
+This is a [Sokoban](http://en.wikipedia.org/wiki/Sokoban) clone written in JavaScript using [KnockOutJS](http://knockoutjs.com/).
 
 A running version is available online at: **http://jsbin.com/equcew/35**
 
