@@ -1,3 +1,8 @@
+div#container{
+  display: inline-block;
+  text-align: middle;
+}
+
 div.tile {
   width: 20px;
   height: 20px;
@@ -41,4 +46,8 @@ div.man{
 
 .clearFloat{
   clear: both;
+}
+
+.centered {
+  text-align: center;
 }

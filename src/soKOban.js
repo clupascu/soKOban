@@ -30,31 +30,36 @@ soKOban.Tile = function(tileState) {
   };
 };
 
-soKOban.Board = function(boardString) {
+soKOban.Board = function() {
   
   var self = this;
   
   self.boardRows = ko.observableArray([]);
-  
-  var rows = boardString.split('\n');
-  
-  for(var i = 0; i < rows.length; i++) {
+
+  self.loadLevel = function(levelText) {  
+
+    self.boardRows.removeAll();
     
-    var currentRow = ko.observableArray([]);
+    var rows = levelText.split('\n');
+  
+    for(var i = 0; i < rows.length; i++) {
     
-    var tileValues = rows[i].split('');
-    for(var j = 0; j < tileValues.length; j++) {    
-      var tile = new soKOban.Tile(tileValues[j]);
+      var currentRow = ko.observableArray([]);
+    
+      var tileValues = rows[i].split('');
+      for(var j = 0; j < tileValues.length; j++) {    
+        var tile = new soKOban.Tile(tileValues[j]);
           
-      if(tile.contents() === "man") {
-        self.manCoords = { x: j, y: i };
-      }
+        if(tile.contents() === "man") {
+          self.manCoords = { x: j, y: i };
+        }
       
-      currentRow().push(tile);
-    }
+        currentRow().push(tile);
+      }
     
-    self.boardRows.push(currentRow);
-  }
+      self.boardRows.push(currentRow);
+    }
+  };
   
   self.misplacedBoxesCount = ko.computed(function () {
     var misplacedCount = 0;
@@ -82,7 +87,14 @@ soKOban.Board = function(boardString) {
     return self.boardRows()[coords.y]()[coords.x];
   };
   
+  self.moveLeft = function(){ self.move('left'); };
+  self.moveRight = function(){ self.move('right'); };
+  self.moveDown = function(){ self.move('down'); };
+  self.moveUp = function(){ self.move('up'); };
+  
   self.move = function(direction) {
+    
+    console.log(direction);
     
     if(self.levelSolved())
       return;
@@ -133,22 +145,6 @@ soKOban.Board = function(boardString) {
   };
 };
 
-
-var boardText = "███████ \n" + 
-                "█ ☺   ██\n" + 
-                "███ ○██ \n" + 
-                "  █  █  \n" + 
-                "  █ ○██ \n" + 
-                " ██   ██\n" + 
-                " █■  ◙■█\n" + 
-                " ███████\n";
-
-var model = new soKOban.Board(boardText);
-    
-ko.applyBindings(model);
-
-window.parent.model = model;
-
 keys = {
   up: [38, 75, 87],
   down: [40, 74, 83],
@@ -172,3 +168,58 @@ addEventListener("keydown", function (e) {
       model.move(direction) ;
     }
 }, false);
+
+
+var levels = [
+    "███████ \n" + 
+    "█ ☺   ██\n" + 
+    "███ ○██ \n" + 
+    "  █  █  \n" + 
+    "  █ ○██ \n" + 
+    " ██   ██\n" + 
+    " █■  ◙■█\n" + 
+    " ███████\n",
+  
+  "    █████          \n" +                                                        
+  "    █   █          \n" +                                                     
+  "    █○  █          \n" +                                                     
+  "  ███  ○██         \n" +                                       
+  "  █  ○ ○ █         \n" +                                                     
+  "███ █ ██ █   ██████\n" +                                                     
+  "█   █ ██ █████  ■■█\n" +                                                     
+  "█ ○  ○          ■■█\n" +                                                     
+  "█████ ███ █☺██  ■■█\n" +                                                          
+  "    █     █████████\n" +                                                             
+  "    ███████        \n",
+
+    " █████   \n" +                                                               
+    " █   ████\n" +                                                              
+    " █   █  █\n" +                                                            
+    " ██    ■█\n" +                                                            
+    "███ ███■█\n" +                                                               
+    "█ ○ █ █■█\n" +                                                             
+    "█ ○○█ ███\n" +                                                              
+    "█☺  █    \n" +                                                           
+    "█████    \n",
+  
+    "  █████\n" +          
+    "  █   █\n" +       
+    "███ ○ █\n" +         
+    "█    ██\n" +       
+    "█■■☻◙█ \n" +       
+    "█ ○  ██\n" +        
+    "███ ○ █\n" +       
+    "  █   █\n" +      
+    "  █████\n"
+];
+
+function playLevel(levelNumber){
+  var levelText = levels[levelNumber];
+  model.loadLevel(levelText);  
+}
+
+var model = new soKOban.Board();
+ko.applyBindings(model); 
+
+
+playLevel(0);
