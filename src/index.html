@@ -10,47 +10,49 @@
 </head>
 <body>
   
-  <div id="container" class="well">
-    <h1>soKOban</h1>    
-  
-    <div class="well">    
-      <div data-bind="foreach: boardRows">
-        <div>
-          <span data-bind="foreach: $data">
-            <div data-bind="attr: { 'class': type() + ' tile' }">
-              <div data-bind="attr: { 'class': contents() + ' contents' }">
+  <div class="center-content">
+    <div id="container" class="well">
+      <h1>soKOban</h1>    
+    
+      <div class="well">    
+        <div data-bind="foreach: boardRows">
+          <div>
+            <span data-bind="foreach: $data">
+              <div data-bind="attr: { 'class': type() + ' tile' }">
+                <div data-bind="attr: { 'class': contents() + ' contents' }">
+                </div>
               </div>
-            </div>
-          </span>
+            </span>
+          </div>
+          
+          <div class="clearFloat"></div>
+          
         </div>
-        
-        <div class="clearFloat"></div>
-        
       </div>
-    </div>
-        
-    <div class="alert alert-success">Misplaced boxes: <span class="badge" data-bind="text: misplacedBoxesCount"></span></div>
-    
-    <div class="well">
-      <div class="row centered">
-        <button class="btn" data-bind="click: moveUp">&uarr;</button>
+          
+      <div class="alert alert-success">Misplaced boxes: <span class="badge" data-bind="text: misplacedBoxesCount"></span></div>
+      
+      <div class="well">
+        <div class="row centered">
+          <button class="btn" data-bind="click: moveUp">&uarr;</button>
+        </div>
+        <div class="row centered">
+          <button class="btn"  data-bind="click: moveLeft">&larr;</button>
+          <button class="btn"  data-bind="click: moveDown">&darr;</button>
+          <button class="btn"  data-bind="click: moveRight">&rarr;</button>
+        </div>
       </div>
-      <div class="row centered">
-        <button class="btn"  data-bind="click: moveLeft">&larr;</button>
-        <button class="btn"  data-bind="click: moveDown">&darr;</button>
-        <button class="btn"  data-bind="click: moveRight">&rarr;</button>
-      </div>
-    </div>
-    
-    <div class="row centered">  
-      <div class="btn-group">
-        <button class="btn" onclick="playLevel(0);">Level 1</button>
-        <button class="btn" onclick="playLevel(1);">Level 2</button>
-        <button class="btn" onclick="playLevel(2);">Level 3</button>
-        <button class="btn" onclick="playLevel(3);">Level 4</button>
-      </div>
+      
+      <div class="well centered">
+        <div class="btn-group">
+          <button class="btn" onclick="playLevel(0);">Level 1</button>
+          <button class="btn" onclick="playLevel(1);">Level 2</button>
+          <button class="btn" onclick="playLevel(2);">Level 3</button>
+          <button class="btn" onclick="playLevel(3);">Level 4</button>
+        </div>
 
-      <h3 data-bind="visible: levelSolved">Congratulations, you won!</h3>
+        <h3 data-bind="visible: levelSolved">Congratulations, you won!</h3>
+      </div>
     </div>
   </div>
   <script src="soKOban.js"></script>

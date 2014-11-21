@@ -1,6 +1,10 @@
+div.center-content{
+  text-align: center;
+}
+
 div#container{
   display: inline-block;
-  text-align: middle;
+  text-align: center;
 }
 
 div.tile {
