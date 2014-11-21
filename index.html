@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+<meta charset=utf-8 />
+<title>soKOban</title>
+</head>
+<body>
+  
+  <a href="https://github.com/clupascu/soKOban"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+  <div class="center-content">
+    <div id="container" class="well">
+      <h1>soKOban</h1>    
+    
+      <div class="well">    
+        <div data-bind="foreach: boardRows">
+          <div>
+            <span data-bind="foreach: $data">
+              <div data-bind="attr: { 'class': type() + ' tile' }">
+                <div data-bind="attr: { 'class': contents() + ' contents' }">
+                </div>
+              </div>
+            </span>
+          </div>
+          
+          <div class="clearFloat"></div>
+          
+        </div>
+      </div>
+          
+      <div class="alert alert-success">Misplaced boxes: <span class="badge" data-bind="text: misplacedBoxesCount"></span></div>
+      
+      <div class="well">
+        <div class="row centered">
+          <button class="btn" data-bind="click: moveUp">&uarr;</button>
+        </div>
+        <div class="row centered">
+          <button class="btn"  data-bind="click: moveLeft">&larr;</button>
+          <button class="btn"  data-bind="click: moveDown">&darr;</button>
+          <button class="btn"  data-bind="click: moveRight">&rarr;</button>
+        </div>
+      </div>
+      
+      <div class="well centered">
+        <div class="btn-group">
+          <button class="btn" onclick="playLevel(0);">Level 1</button>
+          <button class="btn" onclick="playLevel(1);">Level 2</button>
+          <button class="btn" onclick="playLevel(2);">Level 3</button>
+          <button class="btn" onclick="playLevel(3);">Level 4</button>
+        </div>
+
+        <h3 data-bind="visible: levelSolved">Congratulations, you won!</h3>
+      </div>
+    </div>
+  </div>
+  <script src="soKOban.js"></script>
+</body>
+</html>
